@@ -10,6 +10,7 @@
 </ion-header>
 
 <ion-content>
+    <ion-button (click)="newUser()">+새유저</ion-button>
     <ion-list lines="none">
       <ion-item *ngFor="let item of photos" (click)="showDetail(item)">
         <ion-icon slot="start" color="medium" name="book"></ion-icon>
