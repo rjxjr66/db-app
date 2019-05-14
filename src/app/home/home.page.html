@@ -13,7 +13,7 @@
     <ion-button (click)="newUser()">+새유저</ion-button>
     <ion-list lines="none">
       <ion-item *ngFor="let item of photos" (click)="showDetail(item)">
-        <ion-icon slot="start" color="medium" name="book"></ion-icon>
+        <ion-icon slot="start" color="medium" name="book" (click)="delete(item.id);$event.stopPropagation()"></ion-icon>
         <ion-label>{{ item.name }}</ion-label>
       </ion-item>
     </ion-list>

@@ -11,7 +11,7 @@ export class HomePage implements OnInit {
   constructor(private readonly http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('http://localhost:3000/photos')
+    this.http.get('http://localhost:3000/users')
     .subscribe((data: any) => {
       this.photos = data;
     });
@@ -27,9 +27,18 @@ export class HomePage implements OnInit {
       is: true,
     };
 
+    user.name = prompt('이름을 입력하세요.');
+
     this.http.post('http://localhost:3000/users', user)
     .subscribe(_ => {
       this.photos.push(_);
+    });
+  }
+
+  delete(id) {
+    this.http.delete(`http://localhost:3000/users/${id}`)
+    .subscribe((data: any) => {
+      this.photos.splice(this.photos.findIndex(_ => _.id === id), 1);
     });
   }
 
